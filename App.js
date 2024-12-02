@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, ScrollView } from "react-native";
+import { StyleSheet, View, Text, ScrollView, SafeAreaView } from "react-native";
 import { StatusBar } from "expo-status-bar";
+import { LinearGradient } from "expo-linear-gradient";
 import { useInput } from "./hooks/InputHook";
 import StatsDisplay from "./components/StatsDisplay";
 import TextInputForm from "./components/TextInputForm";
@@ -34,59 +35,68 @@ export default function App() {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <StatusBar style="light" />
-      <ScrollView contentContainerStyle={styles.scrollView}>
-        <View style={styles.plaque}>
-          <Text style={styles.heading}>
-            Welcome to{"\n"}
-            <Text style={styles.title}>WordCount</Text>
-          </Text>
-          <View style={styles.statsContainer}>
-            <StatsDisplay label="Number of words" value={wordCount} />
-            <StatsDisplay
-              label="Time to read"
-              value={minutesToRead}
-              unit="minute(s)"
-            />
-            <StatsDisplay
-              label="Time to speak"
-              value={minutesToSpeak}
-              unit="minute(s)"
+      <LinearGradient
+        colors={["orange", "rgba(70, 155, 224, 0.9)"]}
+        style={styles.background}
+      >
+        <ScrollView contentContainerStyle={styles.scrollView}>
+          <View style={styles.plaque}>
+            <Text style={styles.heading}>
+              <Text>Welcome to</Text>
+              {"\n"}
+              <Text style={styles.title}>WordCount</Text>
+            </Text>
+            <View style={styles.statsContainer}>
+              <StatsDisplay label="Number of words" value={wordCount} />
+              <StatsDisplay
+                label="Time to read"
+                value={minutesToRead}
+                unit="minute(s)"
+              />
+              <StatsDisplay
+                label="Time to speak"
+                value={minutesToSpeak}
+                unit="minute(s)"
+              />
+            </View>
+            <View style={styles.divider} />
+            <TextInputForm
+              value={value}
+              onChangeText={bind.onChange}
+              onSubmit={calculate}
+              onClear={handleClear}
             />
           </View>
-          <View style={styles.divider} />
-          <TextInputForm
-            value={value}
-            onChangeText={bind.onChange}
-            onSubmit={calculate}
-            onClear={handleClear}
-          />
-        </View>
-      </ScrollView>
-    </View>
+        </ScrollView>
+      </LinearGradient>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "orange",
+  },
+  background: {
+    flex: 1,
   },
   scrollView: {
     flexGrow: 1,
     justifyContent: "center",
+    padding: 20,
   },
   plaque: {
     backgroundColor: "rgba(0, 70, 128, 0.99)",
-    margin: "5%",
-    padding: "5%",
+    padding: 20,
     borderRadius: 10,
     shadowColor: "#000",
     shadowOffset: { width: 2, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
+    // transform: [{ skewY: "-12deg" }],
   },
   heading: {
     marginBottom: 20,

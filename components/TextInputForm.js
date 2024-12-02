@@ -42,13 +42,14 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flexDirection: "row",
-    justifyContent: "space-around",
+    justifyContent: "center",
   },
   button: {
     backgroundColor: "black",
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,
+    marginHorizontal: 10,
   },
   buttonText: {
     color: "white",
