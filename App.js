@@ -46,7 +46,7 @@ export default function App() {
             <Text style={styles.heading}>
               <Text>Welcome to</Text>
               {"\n"}
-              <Text style={styles.title}>WordCount</Text>
+              <Text style={styles.title}>WordCount Pro</Text>
             </Text>
             <View style={styles.statsContainer}>
               <StatsDisplay label="Number of words" value={wordCount} />
