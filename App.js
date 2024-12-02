@@ -6,6 +6,7 @@ import { useInput } from "./hooks/InputHook";
 import StatsDisplay from "./components/StatsDisplay";
 import TextInputForm from "./components/TextInputForm";
 
+// wordcountpro.surge.sh
 export default function App() {
   const { value, bind, reset } = useInput("");
   const [wordCount, setWordCount] = useState(0);
